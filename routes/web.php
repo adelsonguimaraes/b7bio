@@ -16,6 +16,13 @@ use App\Http\Controllers as Controllers;
 
 Route::get('/', [Controllers\HomeController::class, 'index']);
 
-Route::get('/admin', [Controllers\AdminController::class, 'index']);
+Route::prefix('/admin')->group(function () {
+    
+    Route::get('/login', [Controllers\AdminController::class, 'login'])->name('login');
+    Route::post('/login', [Controllers\AdminController::class, 'loginAction']);
+    Route::get('/register', [Controllers\AdminController::class, 'register']);
+    Route::get('/', [Controllers\AdminController::class, 'index']);
+
+});
 
 Route::get('/{slug}', [Controllers\PageController::class, 'index']);
