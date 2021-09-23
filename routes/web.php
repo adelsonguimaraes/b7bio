@@ -21,6 +21,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/login', [Controllers\AdminController::class, 'login'])->name('login');
     Route::post('/login', [Controllers\AdminController::class, 'loginAction']);
     Route::get('/register', [Controllers\AdminController::class, 'register']);
+    Route::post('/register', [Controllers\AdminController::class, 'registerAction']);
+    Route::get('/logout', [Controllers\AdminController::class, 'logout']);
     Route::get('/', [Controllers\AdminController::class, 'index']);
 
 });
